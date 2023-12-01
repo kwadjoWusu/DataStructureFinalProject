@@ -17,7 +17,7 @@ All events for single day can be displayed using a stack to manage daily events.
 Events within a specified month can be quickly accessed using a hash table.
 
 5. Event Conflicts:
-New events scheduled for the same day and time as another event will be alert the user and warn about event scheduling conflicts.
+New events scheduled for the same day and time as another event will alert the user and warn about event scheduling conflicts.
 
 6. Event Reminders:
 Events reminders can be managed and displayed using a priority queue.
