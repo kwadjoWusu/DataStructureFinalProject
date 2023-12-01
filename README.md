@@ -57,4 +57,4 @@ As a user, to view the upcoming events in the calendar, enter 7.
 
 As a user, to view all events in the calendar, enter 8.
 
-As a user, to end your interaction with the system, enter 0.
+As a user, to end your interaction with the system, enter 9.
