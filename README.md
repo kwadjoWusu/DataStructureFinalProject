@@ -39,12 +39,21 @@ The function of each number is outlined below:
 
 Based on the number the user selects from the menu above the system will perform one of eight actions.
 
+
 If the user enters 1 they can create a new event by specifying the title, description, date and time. 
+
 If the user enters 2 they can change information pertaining to a specified event. 
+
 If the user enters 3 they can search for a specified event.
+
 If the user enters 4 they can remove a specified event.
+
 If the user enters 5 they can view the events of a particular day.
+
 If the user enters 6 they can view the events of a particular month.
+
 If the user enters 7 they can view the upcoming events.
+
 If the user enters 8 they can view all events in the calendar.
+
 If the user enters 0 they can end their interaction with the system.
