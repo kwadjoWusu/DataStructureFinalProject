@@ -38,7 +38,8 @@ The function of each number is outlined below:
 0. **Quit:** End interaction with the system.
 
 
-Based on the number the user selects from the menu above, the system will perform one of nine actions.
+Based on the number the user selects from the menu above, the system will them to perform one of nine actions.
+
 
 
 As a user, to create a new event, enter 1.
