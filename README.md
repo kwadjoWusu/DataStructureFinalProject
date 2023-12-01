@@ -21,3 +21,5 @@ Implement an algorithm to detect and warn about event scheduling conflicts.
 
 6. Event Reminders:
 Use a priority queue to manage and display upcoming event reminders.
+
+# Instructions
