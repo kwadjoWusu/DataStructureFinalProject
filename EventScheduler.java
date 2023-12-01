@@ -128,8 +128,13 @@ public boolean isFull() {
 
     if (indexToRemove != -1) {
         Event removedEvent = eventplanner[indexToRemove];
-        System.out.println(removedEvent.toString() + " has been removed successfully");
         eventplanner[indexToRemove] = null;  // Set the removed event to null
+        System.out.println(removedEvent.toString() + " has been removed successfully");
+
+        for (int i = indexToRemove; i < top; i++) {
+            eventplanner[i] = eventplanner[i + 1];
+        }
+        eventplanner[top] = null;  // Set the last element to null
         top--;
         size--;
     } else {
@@ -230,14 +235,16 @@ public Event findEventWithTitle(String title) {
         if (event != null && event.getTitle().equals(title)) {
             return event;
              }
-              }
+    }
                return null;
-               }
+    }
 
 public void printAllEvents() {
     System.out.println("All Events in the Event Scheduler:");
-    for (int i = 0; i <= top; i++) {
-        System.out.println(eventplanner[i].toString());
+    for (int i = 0; i <size; i++) {
+        if (eventplanner[i]!=null) {
+            System.out.println(eventplanner[i].toString());
+        }
     }
 }
 
