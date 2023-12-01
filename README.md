@@ -35,7 +35,7 @@ The function of each number is outlined below:
 6. **Get Monthly Events:** View the events of a particular month.
 7. **Get Upcoming Events:** View the upcoming events.
 8. **Print All Events:** View all events in the calendar.
-0. **Quit:** End interaction with the system.
+9. **Quit:** End interaction with the system.
 
                                                                                                                                   
 Based on the number the user selects from the menu above, the system will them to perform one of nine actions.
