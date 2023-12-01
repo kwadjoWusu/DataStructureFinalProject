@@ -121,10 +121,10 @@ public class EventScheduler {
         Event[] monthlyEvents = new Event[capacity];
 
         for (Event event : eventplanner) {
-            if (event != null && getMonthFromEvent(event) == month) {
-                int day = getDayFromEvent(event);
+            if (event != null && getMonth(event.getDate()) == month) {
+                int day = getDay(event.getDate());
     
-                int stepSize = calcStepSize(day);
+                int stepSize = secondaryHash(day);
     
                 while (monthlyEvents[day] != null) {
                     day = (day + stepSize) % capacity;
@@ -136,7 +136,15 @@ public class EventScheduler {
         return monthlyEvents;
     }
     
-    private int calcStepSize(int day) {
+    private int secondaryHash(int day) {
         return capacity - (day % (capacity - 1));
+    }
+
+    private int getMonth(int date) {
+        return (date / 100) % 100;
+    }
+
+    private int getDay(int date) {
+        return date % 100;
     }
 }
