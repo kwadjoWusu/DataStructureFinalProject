@@ -24,7 +24,7 @@ Events reminders can be managed and displayed using a priority queue.
 
 # Instructions
 
-The system works using an interactive menu that allows users to input a number from 0 to 8 for a specific action.
+The system works using an interactive menu that allows users to input a number from 1 to 9 for a specific action.
 The function of each number is outlined below:
 
 1. **Create Event:** Create a new event by specifying the title, description, date and time.
