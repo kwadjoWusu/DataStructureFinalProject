@@ -13,6 +13,18 @@ public class EventScheduler {
         this.reminderList = new MaxBinaryHeap();
     }
 
+    private int getMonthFromEvent(Event event) {
+
+        int year = event.getDate() / 10000;
+        int month = (event.getDate() / 100) % 100;
+        return month;
+    }
+
+    private int getDayFromEvent(Event event) {
+        int day = event.getDate() % 100;
+        return day;
+    }
+
     public boolean isEmpty() {
         if (size == 0)
             return true;
@@ -27,14 +39,19 @@ public class EventScheduler {
             return false;
     }
 
+    private void increaseSize(){
+        Event[] newlist = new  Event[capacity*2];
+        System.arraycopy(eventplanner, 0,newlist, 0, eventplanner.length);
+        eventplanner  = newlist;
+    }
+
     public void push(Event occassion) {
         if (this.isFull()) {
-            System.out.println("Overflow");
-        } else {
-            top++;
-            eventplanner[top] = occassion;
-            size++;
+            increaseSize();
         }
+        top++;
+        eventplanner[top] = occassion;
+        size++;
     }
 
     public Event peek() {
@@ -49,16 +66,9 @@ public class EventScheduler {
     }
 
     public void createEvent(String title, String description, int date, int time) {// more or less creation and
-                                                                                   // insertion
-        if (!(this.isFull())) {
-            Event newEvent = new Event(title, description, date, time); // call constructor, create the event, and
-                                                                        // insert in stack
+            Event newEvent = new Event(title, description, date, time); // call constructor, create the event, and                                             // insert in stack
             push(newEvent);
             reminderList.insert(newEvent);
-
-        } else {
-            System.out.println("Event Planner is full, complete some tasks to create");
-        }
 
     }
 
@@ -87,7 +97,7 @@ public class EventScheduler {
         event.setDescription(description);
         // present date should be the lower bound
         event.setDate(date);
-        if (time < 1200 || time > 2359) // do present time should be the lower bound
+        if (time >= 0 &&  time <= 2359) // do present time should be the lower bound
             throw new IndexOutOfBoundsException("Input only times from now to 2359");
         event.setTime(time);
     }
@@ -121,10 +131,10 @@ public class EventScheduler {
         Event[] monthlyEvents = new Event[capacity];
 
         for (Event event : eventplanner) {
-            if (event != null && getMonth(event.getDate()) == month) {
-                int day = getDay(event.getDate());
+            if (event != null && getMonthFromEvent(event) == month) {
+                int day = getDayFromEvent(event);
     
-                int stepSize = secondaryHash(day);
+                int stepSize = calcStepSize(day);
     
                 while (monthlyEvents[day] != null) {
                     day = (day + stepSize) % capacity;
@@ -136,15 +146,7 @@ public class EventScheduler {
         return monthlyEvents;
     }
     
-    private int secondaryHash(int day) {
+    private int calcStepSize(int day) {
         return capacity - (day % (capacity - 1));
-    }
-
-    private int getMonth(int date) {
-        return (date / 100) % 100;
-    }
-
-    private int getDay(int date) {
-        return date % 100;
     }
 }
